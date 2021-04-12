@@ -45,6 +45,12 @@ main(int argc, char *argv[])
         printf("Dynamic BM+GSHARE\t\tn=4\t\t%lf\n", res);
         res = dynamic_bm_gshare(trace_root, 8);
         printf("Dynamic BM+GSHARE\t\tn=8\t\t%lf\n", res);
+        res = dynamic_tournament(trace_root, 2);
+        printf("Dynamic Tournament\t\tn=2\t\t%lf\n", res);
+        res = dynamic_tournament(trace_root, 4);
+        printf("Dynamic Tournament\t\tn=4\t\t%lf\n", res);
+        res = dynamic_tournament(trace_root, 8);
+        printf("Dynamic Tournament\t\tn=8\t\t%lf\n", res);
 
         /* cleanup */
 

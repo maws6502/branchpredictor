@@ -46,6 +46,7 @@ Dynamic BM+GSHARE               n=8             0.877773
 * Static Not Taken (SNT)
 * Dynamic Bimodal (Dynamic BM)
 * Dynamic Bimodal + Global Branch History (Dynamic BM+GSHARE)
+* Dynamic Tournament for Bimodal and Bimodal + Global Branch History
 
 
 ##### General program design

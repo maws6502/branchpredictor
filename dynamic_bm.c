@@ -22,7 +22,6 @@ dynamic_bm(Trace *t, int n)
                         itab[i]++;
                 if (!t->taken && itab[i] > 0)
                         itab[i]--;
-
         }
 
         free(itab);

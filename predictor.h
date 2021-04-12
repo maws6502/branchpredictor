@@ -12,3 +12,4 @@ double  static_taken(Trace *);
 double  static_not_taken(Trace *);
 double  dynamic_bm_gshare(Trace *, int);
 double  dynamic_bm(Trace *, int);
+double  dynamic_tournament(Trace *, int );

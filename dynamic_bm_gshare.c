@@ -25,7 +25,6 @@ dynamic_bm_gshare(Trace *t, int n)
                 /* finally update gshare */
                 gshare <<= 1;
                 gshare |= 1L & t->taken; /* little bit of sanity checking, as we have no input validation, so &ding with 1*/
-
         }
 
         free(itab);

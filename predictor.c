@@ -9,8 +9,9 @@ main(int argc, char *argv[])
         /* (poorly) attempt to stick to c89. 
          * this attempt would have failed by the around 4 AM  */
         FILE *trace_file;
+        Trace *trace_root, *t;
+        double res;
         char trace_line[MAX_TRACE_LINE_LEN];
-        Trace *trace_root, *t;       
 
         if (argc != 2 || access(argv[1], R_OK)) {
                 printf("Error: invalid arguments\n"); /* enough said */
@@ -27,21 +28,35 @@ main(int argc, char *argv[])
                 t = t->next;
                 t->next = NULL; /* you never know */
         }
-        double res;
+
         res = static_taken(trace_root);
-        printf("Static Taken: %lf\n", res);
+        printf("ST\t\t\t\t\t\t%lf\n", res);
         res = static_not_taken(trace_root);
-        printf("Static Not Taken: %lf\n", res);
+        printf("SNT\t\t\t\t\t\t%lf\n", res);
         res = dynamic_bm(trace_root, 2);
-        printf("Dynamic BM, n=2: %lf\n", res);
+        printf("Dynamic BM\t\t\tn=2\t\t%lf\n", res);
         res = dynamic_bm(trace_root, 4);
-        printf("Dynamic BM, n=4: %lf\n", res);
+        printf("Dynamic BM\t\t\tn=4\t\t%lf\n", res);
         res = dynamic_bm(trace_root, 8);
-        printf("Dynamic BM, n=8: %lf\n", res);
+        printf("Dynamic BM\t\t\tn=8\t\t%lf\n", res);
         res = dynamic_bm_gshare(trace_root, 2);
-        printf("Dynamic BM+GSHARE, n=2: %lf\n", res);
+        printf("Dynamic BM+GSHARE\t\tn=2\t\t%lf\n", res);
         res = dynamic_bm_gshare(trace_root, 4);
-        printf("Dynamic BM+GSHARE, n=4: %lf\n", res);
+        printf("Dynamic BM+GSHARE\t\tn=4\t\t%lf\n", res);
         res = dynamic_bm_gshare(trace_root, 8);
-        printf("Dynamic BM+GSHARE, n=8: %lf\n", res);
+        printf("Dynamic BM+GSHARE\t\tn=8\t\t%lf\n", res);
+
+        /* cleanup */
+
+        t = trace_root;
+        trace_root = trace_root->next;
+        free(t);
+
+        while(trace_root) {
+                t = trace_root;
+                trace_root = trace_root->next;
+                free(t);
+        }
+
+        return 0;
 }

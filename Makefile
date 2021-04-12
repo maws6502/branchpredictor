@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I. -Wall
+CFLAGS=-I. -Wall -Wno-parentheses --std=c89 # fight me
 DEPS = predictor.h
 OBJ = predictor.o dynamic_bm_gshare.o dynamic_bm.o static_taken.o static_not_taken.o
 

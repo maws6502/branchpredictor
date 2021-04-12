@@ -7,22 +7,20 @@ dynamic_bm_gshare(Trace *t, int n)
 {
         unsigned long passed = 0, correct = 0, gshare = 0;
         /* if N is too big to fit this, we have other problems */
-        uint8_t *itab = malloc(1L << n + 1); 
+        int8_t *itab = calloc(1L << n + 1, 1); 
         /* TODO: when less sleepy, check if this is 2x the memory we need */
-
-        long mask = (1L << n + 1) - 1;
-        /* we are mapping -1:2 -> SNT:ST */
+        /* we are mapping 0:3 -> SNT:ST */
 
         while (t = t->next) {
-                int i = (t->addr ^ gshare) & mask;
+                int i = (t->addr ^ gshare) & ((1L << n + 1) - 1);
                 passed++;
                 /* first, predict */
-                if (itab[i] > 0 && t->taken || itab[i] <= 0 && !t->taken) 
+                if (t->taken ? itab[i] >= 2 : itab[i] <= 1)
                         correct++;
                 /* then, update */
-                if (t->taken && itab[i] < 2)
+                if (t->taken && itab[i] < 3)
                         itab[i]++;
-                else if (!t->taken && itab[i] > -1)
+                if (!t->taken && itab[i] > 0)
                         itab[i]--;
                 /* finally update gshare */
                 gshare <<= 1;

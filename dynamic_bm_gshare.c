@@ -1,3 +1,7 @@
+/* EE318 Assignment 1
+ * Aditya Goturu <aditya18203@mechyd.ac.in>
+ * 18XJ1A0203
+ */
 #include <stdint.h>
 #include <stdlib.h>
 #include "predictor.h"

@@ -1,3 +1,7 @@
+/* EE318 Assignment 1
+ * Aditya Goturu <aditya18203@mechyd.ac.in>
+ * 18XJ1A0203
+ */
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -6,8 +10,7 @@
 int
 main(int argc, char *argv[])
 {
-        /* (poorly) attempt to stick to c89. 
-         * this attempt would have failed by the around 4 AM  */
+        /* attempt to stick to c89 */
         FILE *trace_file;
         Trace *trace_root, *t;
         double res;
@@ -39,18 +42,24 @@ main(int argc, char *argv[])
         printf("Dynamic BM\t\t\tn=4\t\t%lf\n", res);
         res = dynamic_bm(trace_root, 8);
         printf("Dynamic BM\t\t\tn=8\t\t%lf\n", res);
+        res = dynamic_bm(trace_root, 16);
+        printf("Dynamic BM\t\t\tn=16\t\t%lf\n", res);
         res = dynamic_bm_gshare(trace_root, 2);
         printf("Dynamic BM+GSHARE\t\tn=2\t\t%lf\n", res);
         res = dynamic_bm_gshare(trace_root, 4);
         printf("Dynamic BM+GSHARE\t\tn=4\t\t%lf\n", res);
         res = dynamic_bm_gshare(trace_root, 8);
         printf("Dynamic BM+GSHARE\t\tn=8\t\t%lf\n", res);
+        res = dynamic_bm_gshare(trace_root, 16);
+        printf("Dynamic BM+GSHARE\t\tn=16\t\t%lf\n", res);
         res = dynamic_tournament(trace_root, 2);
         printf("Dynamic Tournament\t\tn=2\t\t%lf\n", res);
         res = dynamic_tournament(trace_root, 4);
         printf("Dynamic Tournament\t\tn=4\t\t%lf\n", res);
         res = dynamic_tournament(trace_root, 8);
         printf("Dynamic Tournament\t\tn=8\t\t%lf\n", res);
+        res = dynamic_tournament(trace_root, 16);
+        printf("Dynamic Tournament\t\tn=16\t\t%lf\n", res);
 
         /* cleanup */
 

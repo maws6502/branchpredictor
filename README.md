@@ -1,7 +1,4 @@
-## EE318 Assignment 1
-
-Aditya Goturu <aditya18203@mechyd.ac.in>
-18XJ1A0203
+# This was a course assignment (Computer Architectecture and Design, year 3 core course for a bachelors in electrical and electronics engineering), releasing publically as the course is unlikely to be repeated. 
 
 ### Compiling and running
 
